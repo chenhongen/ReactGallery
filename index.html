@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title>前世</title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+ <style>
+	html {
+		background: #FFF url(image/bg.jpg) no-repeat center  center fixed;
+		-webkit-background-size: 100% 100%;
+		-moz-background-size: 100% 100%;
+		-o-background-size: 100% 100%;
+		background-size: 100% 100%;
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/bg.jpg', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image/bg.jpg', sizingMethod='scale')";
+	}
+	.inputCss {
+		display:inline;
+		background-color: transparent;
+		text-align:center;
+		border:0px;
+		background:url(image/input.png) no-repeat bottom right;
+		-webkit-background-size: 100% 100%;
+		-moz-background-size: 100% 100%;
+		-o-background-size: 100% 100%;
+		background-size: 100% 100%;
+		font-family:"楷体";
+		margin:10px 100px;
+	}
+	#content{
+		
+	}
+	#phone{
+		
+	}
+	.container {
+		text-align:center;
+		margin:100px 0 50px;
+	}
+	.btn {
+		background:url(image/btn.png) 140px 145px; 
+		width:140px;
+		height:145px;
+		margin:0 auto;
+	]
+ </style>
+ 
+ <body>
+	<div class="container">
+		<input class="inputCss" id="content" placeholder="输入您的姓名"/>
+		<input class="inputCss" id="phone" placeholder="输入手机号码"/>
+	</div>
+	<div class="btn" onclick="main()"></div>
+ </body>
+ <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+ <script>
+	var content = $("#content").val();
+	var phone = $("#phone").val();
+	var temp = encodeURI(content).replace(/[^0-9]+/g, ''); // 
+
+	// 存储数据 
+	var datas = "姓名，号码，";
+
+
+	$(function(){
+		$("#content").focus();
+		//alert(sec[temp%12].name);
+	});
+
+	function main() {
+		//datas = datas + '\n' + content + "，" + phone + "，";
+		window.location.href = "page/index.html?key="+temp%12;
+	}
+
+ </script>
+</html>

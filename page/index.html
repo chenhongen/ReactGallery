@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+    <title>前世</title>
+    <script src="../js/react.js"></script>
+    <script src="../js/JSXTransformer.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/data.js" charset="gbk"></script>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+		body{
+			background-color:#fff;
+			color:#555;
+			font-family:'Avenir Next', 'Lantinghei SC';
+			font-size:14px;
+			-wevbkit-font-smoothing:antialiased;	
+		}
+		.wrap{
+			width:100%;
+			/*设置垂直居中start*/
+			height:600px;
+			position:absolute;
+			top:50%;
+			margin-top:-300px;
+			/*设置垂直居中end*/
+			background-color:#333;
+			overflow:hidden;
+
+			-webkit-perspective:800px;
+			-moz-perspective:800px;
+			perspective:800px;
+		}
+		.photo{
+			width:260px;
+			height:320px;
+			position:absolute;
+			z-index:1;
+			box-shadow:0 0 1px rgba(0,0,0,.01);
+			-webkit-transition:all .6s;
+			transition:all .6s;
+			-ms-transition:all .6s;
+			-moz-transition:all .6s;
+			-o-transition:all .6s;
+			left:50%;
+			top:50%;
+			margin;-160px 0 0 -130px;
+		}
+		.photo .side{
+			width:100%;
+			height:100%;
+			background-color:#eee;
+			top:0;
+			right:0;
+			position:absolute;
+			padding:20px;
+			box-sizing:border-box;
+
+		}
+		.photo .side-front{}
+		.photo .side-front .image{
+			width:100%;
+			height:250px;
+			line-height:250px;
+			overflow:hidden;
+		}
+		.photo .side-front .image img{
+			width:100%;
+		}
+		.photo .side-front .caption{
+			text-align:center;
+			font-size:16px;
+			line-height:50px;
+		}
+		.photo .side-back{}
+		.photo .side-back .desc{
+			color:#666;
+			font-size:14px;
+			line-height:1.5em;
+			text-indent: 2em;
+		}
+		/*选中：水平、垂直居中方法。设为宽高一半*/
+		.photo_center {
+			width:260px;
+			height:320px;
+			left:50%;
+			top:50%;
+			margin:-160px 0 0 -130px;
+			z-index:999;
+		}
+		.photo_wrap{
+			width:100%;
+			height:100%;
+			position:absolute;
+			transform-style: preserve-3d;
+			-webkit-transform-style: preserve-3d;	/* Safari 和 Chrome */
+			-moz-transform-style: preserve-3d;
+
+			-webkit-transition:-webkit-transform .6s ease-in-out;
+			transition:transform .6s ease-in-out;
+			-ms-transition:-ms-transform .6s ease-in-out;
+			-moz-transition:-moz-transform .6s ease-in-out;
+			-o-transition:-o-transform .6s ease-in-out;
+			
+			-webkit-transform-origin:0% 50%;
+			transform-origin:0% 50%;
+			-ms-transform-origin:0% 50%;
+			-moz-transform-origin:0% 50%;
+			-o-transform-origin:0% 50%;
+
+		}
+		.photo_wrap .side-front{
+			transform:rotateY(360deg);
+			-ms-transform:rotateY(360deg); 	/* IE 9 */
+			-moz-transform:rotateY(360deg); 	/* Firefox */
+			-webkit-transform:rotateY(360deg); /* Safari 和 Chrome */
+			-o-transform:rotateY(360deg); 	/* Opera */
+
+		}
+		.photo_wrap .side-back{
+			transform:rotateY(180deg);
+			-ms-transform:rotateY(180deg); 	/* IE 9 */
+			-moz-transform:rotateY(180deg); 	/* Firefox */
+			-webkit-transform:rotateY(180deg); /* Safari 和 Chrome */
+			-o-transform:rotateY(180deg); 	/* Opera */
+		}
+		.photo_wrap .side{
+			backface-visibility:hidden;
+			-webkit-backface-visibility:hidden;	/* Chrome 和 Safari */
+			-moz-backface-visibility:hidden; 	/* Firefox */
+			-ms-backface-visibility:hidden; 	/* Internet Explorer */
+		}
+		.photo_front .photo_wrap{
+			transform:translate(0pc,0px) rotateY(0deg);
+			-ms-transform:translate(0px,0px) rotateY(0deg); 	/* IE 9 */
+			-moz-transform:translate(0px,0px) rotateY(0deg); 	/* Firefox */
+			-webkit-transform:translate(0px,0px) rotateY(0deg); /* Safari 和 Chrome */
+			-o-transform:translate(0px,0px) rotateY(0deg); 	/* Opera */
+		}
+		.photo_back .photo_wrap{
+			transform:translate(260px,0px) rotateY(180deg);
+			-ms-transform:translate(260px,0px) rotateY(180deg); 	/* IE 9 */
+			-moz-transform:translate(260px,0px) rotateY(180deg); 	/* Firefox */
+			-webkit-transform:translate(260px,0px) rotateY(180deg); /* Safari 和 Chrome */
+			-o-transform:translate(260px,0px) rotateY(180deg); 	/* Opera */
+		}
+		@font-face{
+			font-family:'Glyphicons Halflings';
+			font-family:'Glyphicons Halflings';
+			src:url('fonts/glyphicons-halflings-regular.eot');   /* IE9 Compat Modes */
+			src:url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+			url('fonts/glyphicons-halflings-regular.woff') format('woff'),  /* Modern Browsers */
+			url('fonts/glyphicons-halflings-regular.ttf') format('truetype'),/* Safari, Android, iOS */
+			url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg'); /* Legacy iOS */
+			font-weight:normal;
+			font-size:normal;
+		}
+	</style>
+  </head>
+  <body onselectstart="return false;">
+    <div id="container">
+    </div>
+    <script >
+		var LocString = String(window.document.location.href);
+		var key = 0;
+		function getQueryStr(str) { 
+		var rs = new RegExp("(^|)" + str + "=([^&]*)(&|$)", "gi").exec(LocString), tmp; 
+			if (tmp = rs) { 
+				return tmp[2]; 
+			} 
+			// parameter cannot be found 
+			return ""; 
+		} 
+		$(function(){
+			
+		});
+		function rsort(n) {
+			var _photo = $('.photo');
+			var photos = [];
+			for(var i=0; i<_photo.length; i++) {
+				_photo[i].className = _photo[i].className.replace(/\s*photo_center\s*/,' ');
+				_photo[i].className = _photo[i].className.replace(/\s*photo_back\s*/,' ');
+				//_photo[i].className = _photo[i].className.replace(/\s*photo_front\s*/,' ');
+				_photo[i].style = null;
+				_photo[i].style['transform'] = 'rotate(360deg) scale(1.3)';
+				_photo[i].style['-webkit-transform'] = 'rotate(360deg) scale(1.3)';
+				_photo[i].style['-ms-transform'] = 'rotate(360deg) scale(1.3)';
+				_photo[i].style['-o-transform'] = 'rotate(360deg) scale(1.3)';
+				photos.push(_photo[i]);
+			}
+
+			var e = $('#photo_'+n)[0];
+			e.className += ' photo_center';
+			// 剔除正中
+			photo_center = photos.splice(n-1,1)[0];
+
+			// 拆分左右
+			var photos_left = photos.splice(0,Math.ceil(_photo.length/2));
+			var photos_right = photos;
+			var ranges = range();
+
+			for(var s in photos_left) {
+				photos_left[s].style.left = random(ranges.left.x[0],ranges.left.x[1])+'px';
+				photos_left[s].style.top = random(ranges.left.y[0],ranges.left.y[1])+'px';
+				photos_left[s].style['transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+				photos_left[s].style['-webkit-transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+				photos_left[s].style['-ms-transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+				photos_left[s].style['-o-transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+			}
+
+			for(var s in photos_right) {
+				var photo = photos_right[s];
+				photo.style.left = random(ranges.right.x[0],ranges.right.x[1])+'px';
+				photo.style.top = random(ranges.right.y[0],ranges.right.y[1])+'px';
+				photo.style['transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+				photo.style['-webkit-transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+				photo.style['-ms-transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+				photo.style['-o-transform'] = 'rotate('+random(-150,150)+'deg) scale(1)';
+			}
+		}
+		
+		// 计算左右分区范围
+		function range() {
+			var range = {left:{x:[],y:[]},right:{x:[],y:[]}};
+			var wrap = {
+				w:$(".wrap")[0].scrollWidth,
+				h:$(".wrap")[0].scrollHeight
+			};
+
+			var photo = {
+				w:$(".photo")[0].scrollWidth,
+				h:$(".photo")[0].scrollHeight
+			};
+
+			//range.wrap = wrap;
+			//range.photo = photo;
+
+			range.left.x = [0-photo.w,wrap.w/2-photo.w/2];
+			range.left.y = [0-photo.h,wrap.h];
+			range.right.x = [wrap.w/2+photo.w/2,wrap.w+photo.w];
+			range.right.y = range.left.y;
+
+			return range;
+		}
+
+		// 取值范围
+		function random(min, max) {
+			var diff = max - min;
+			return Math.ceil(Math.random()*diff);
+		}
+
+		function center(key) {
+			var photo = $('.photo')[key];
+			photo.className = photo.className+' photo_center';
+		}
+
+		function turn(i) {
+			alert(i);
+		}
+
+	</script>
+    <script type="text/jsx">
+		/*	
+			div.wrap
+				div.photo[div.photo.photo_center]
+					div.side.side-front
+						p.img
+						p.caption
+					div.side.side-back
+						o.desc
+				div.nav
+					span.i
+		*/
+		
+		
+		// 外层容器
+		var PhotoC = React.createClass({
+			componentDidMount: function() {
+				//rsort(random(1,12));
+				rsort(getQueryStr("key")-1+2);
+				//center(random(1,12));
+			},
+			render: function() {
+				/*var photoNodes = this.props.data.map(function (photo) {
+					return (
+						<Photo photo={photo} key={photo.key}/>
+					);
+				});*/
+
+				var photoNodes = [];
+				var photos = this.props.data;
+				for(i in photos) {
+					photoNodes.push(<Photo photo={photos[i]} key={photos[i].key}/>);
+				}
+
+				return (
+					<div>
+						<div className='wrap' id='wrap'>
+							{photoNodes}
+						</div>
+					</div>
+				)
+			}
+		});
+
+		// 图片容器
+		var Photo = React.createClass({
+			clickTurn: function (e) {
+				e.preventDefault();
+				var pCls = this.getDOMNode().className;
+
+				if(!/photo_center/.test(pCls)) {
+					return rsort(this.props.photo.key);
+				}
+
+				if(/photo_front/.test( pCls )) {
+					pCls = pCls.replace(/photo_front/,'photo_back');
+				} else {
+					pCls = pCls.replace(/photo_back/,'photo_front');
+				}
+				return e.currentTarget.className = pCls;
+			},
+			getInitialState: function() {
+				return {
+					photoClass: 'photo photo_front'
+				}
+			},
+			render: function() {
+				var photoClass = this.state.photoClass;
+				var tempId = 'photo_'+this.props.photo.key;
+				return (
+					<div className={photoClass} onClick={this.clickTurn} id={tempId}>
+						<div className='photo_wrap' >
+							<div className='side side-front' >
+								<p className='image'><img src={this.props.photo.img}/></p>
+								<p className='caption'>{this.props.photo.caption}</p>
+							</div>
+							<div className='side side-back'>
+								<p className='desc'>{this.props.photo.desc}</p>
+							</div>
+						</div>
+					</div>
+				)
+			}
+		});
+
+		React.render(
+		  <PhotoC data={data}/>,
+		  document.getElementById('container')
+		);
+
+
+		
+    </script>
+  </body>
+</html>
