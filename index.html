@@ -1,11 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
  <head>
-  <title>Ç°ÊÀ</title>
-  <meta name="Generator" content="EditPlus">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
+  <title>å‰ä¸–</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
+  <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+  <meta name="Author" content="che">
+  <meta name="Keywords" content="å‰ä¸–">
+  <meta name="Description" content="ç´ ææ¥æºç½‘ç»œï¼Œä»…ä¾›å­¦æœ¯äº¤æµ">
  </head>
  <style>
 	html {
@@ -27,7 +28,7 @@
 		-moz-background-size: 100% 100%;
 		-o-background-size: 100% 100%;
 		background-size: 100% 100%;
-		font-family:"¿¬Ìå";
+		font-family:"æ¥·ä½“";
 		margin:10px 100px;
 	}
 	#content{
@@ -50,8 +51,8 @@
  
  <body>
 	<div class="container">
-		<input class="inputCss" id="content" placeholder="ÊäÈëÄúµÄĞÕÃû"/>
-		<input class="inputCss" id="phone" placeholder="ÊäÈëÊÖ»úºÅÂë"/>
+		<input class="inputCss" id="content" placeholder="è¾“å…¥æ‚¨çš„å§“å"/>
+		<input class="inputCss" id="phone" placeholder="è¾“å…¥æ‰‹æœºå·ç "/>
 	</div>
 	<div class="btn" onclick="main()"></div>
  </body>
@@ -61,8 +62,8 @@
 	var phone = $("#phone").val();
 	var temp = encodeURI(content).replace(/[^0-9]+/g, ''); // 
 
-	// ´æ´¢Êı¾İ 
-	var datas = "ĞÕÃû£¬ºÅÂë£¬";
+	// å­˜å‚¨æ•°æ® 
+	var datas = "å§“åï¼Œå·ç ï¼Œ";
 
 
 	$(function(){
@@ -71,7 +72,7 @@
 	});
 
 	function main() {
-		//datas = datas + '\n' + content + "£¬" + phone + "£¬";
+		//datas = datas + '\n' + content + "ï¼Œ" + phone + "ï¼Œ";
 		window.location.href = "page/index.html?key="+temp%12;
 	}
 
