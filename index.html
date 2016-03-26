@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>前世</title>
+  <title>前世的你尽然是金陵十二钗里的...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no"/>
   <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
   <meta name="Author" content="che">
@@ -55,7 +55,7 @@
 		<input class="inputCss" id="content" placeholder="输入您的姓名"/>
 		<input class="inputCss" id="phone" placeholder="输入手机号码"/>
 	</div>
-	<div class="btn" onclick="main()"></div>
+	<div class="btn" onclick="main()"><img id="share" src="image/share.png" style="z-index:-2;"/></div>
  </body>
  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
  <script>
@@ -67,6 +67,7 @@
 
 	$(function(){
 		$("#content").focus();
+		$("#share").hide();
 		//alert(sec[temp%12].name);
 	});
 	
