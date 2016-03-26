@@ -381,7 +381,13 @@
 		  document.getElementById('container')
 		);
 
-
+		function po(obj){
+			var temp = ""; 
+			for(var i in obj){//用javascript的for/in循环遍历对象的属性 
+				temp += i+":"+obj[i]+"\n"; 
+			} 
+			alert(temp);
+		}
 		
     </script>
   </body>

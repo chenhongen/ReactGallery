@@ -9,7 +9,7 @@
   <meta name="Description" content="素材来源网络，仅供学术交流">
  </head>
  <style>
-	body:before {
+	html:before {
 		content: ' ';
 		position: fixed;
 		z-index: -1;
@@ -79,6 +79,7 @@
 	});
 
 	function main() {
+		window.location.reload();
 		//datas = datas + '\n' + content + "，" + phone + "，";
 		window.location.href = "page/index.html?key="+temp%12;
 	}
