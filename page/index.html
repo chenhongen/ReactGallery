@@ -14,6 +14,9 @@
 			margin:0;
 			padding:0;
 		}
+		a {
+			text-decoration:none;
+		}
 		body{
 			background-color:#fff;
 			color:#555;
@@ -365,7 +368,7 @@
 						<div className='photo_wrap' >
 							<div className='side side-front' >
 								<p className='image'><img src={this.props.photo.img}/></p>
-								<p className='caption'>{this.props.photo.descF}...<a>[点击查看详情]</a></p>
+								<p className='caption'>{this.props.photo.descF}...<a href="">[点击查看详情]</a></p>
 							</div>
 							<div className='side side-back'>
 								<p className='desc'>{this.props.photo.desc}</p>
