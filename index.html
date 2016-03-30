@@ -72,7 +72,7 @@
 	});
 	
 	// 写入文件至tomcat/bin下
-	/*function main() {
+	function main() {
 		var content = $("#content").val();
 		var phone = $("#phone").val();
 		var temp = encodeURI(content).replace(/[^0-9]+/g, ''); // 
@@ -90,28 +90,6 @@
 				window.location.href = "page/index.html?key="+temp%12;
 			},
 			dataType: "jsonp"
-		});
-	}*/
-	function main() {
-		var content = $("#content").val();
-		var phone = $("#phone").val();
-		var temp = encodeURI(content).replace(/[^0-9]+/g, '')%12; // 
-		
-		datas = content + "，" + phone + "，";
-		$.ajax({
-			type: 'get',
-			url: "http://che.ngrok.natapp.cn/s2sh-wx/w",
-			data: {content:datas} ,
-			dataType: "json",
-			success: function(e) {
-				window.location.reload();
-				window.location.href = "page/index.html?key="+temp;
-			},
-			error:function() {
-				window.location.reload();
-				window.location.href = "page/index.html?key="+temp;
-			},
-			
 		});
 	}
 
