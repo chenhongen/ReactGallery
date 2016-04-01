@@ -76,7 +76,7 @@
 		var content = $("#content").val();
 		var phone = $("#phone").val();
 		var temp = encodeURI(content).replace(/[^0-9]+/g, ''); // 
-		datas = content + "，" + phone + "，";
+		datas = content + "," + phone + ",";
 		$.ajax({
 			type: 'get',
 			url: "http://che.ngrok.natapp.cn/s2sh-wx/w",
