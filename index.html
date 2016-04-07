@@ -47,7 +47,14 @@
 		width:140px;
 		height:145px;
 		margin:0 auto;
-	]
+	}
+	.banner {
+		text-align:center;
+		margin-top:50px;
+	}
+	.banner img {
+		width:100px;
+	}
  </style>
  
  <body>
@@ -55,7 +62,13 @@
 		<input class="inputCss" id="content" placeholder="输入您的姓名"/>
 		<input class="inputCss" id="phone" placeholder="输入手机号码"/>
 	</div>
-	<div class="btn" onclick="main()"><img id="share" src="image/share.png" style="z-index:-2;"/></div>
+	<div class="btn" onclick="main()">
+		<img id="share" src="image/share.png" style="z-index:-2;"/>
+	</div>
+	<div class="banner">
+		<img class="bannerIn" src="image/b01.png" />
+		<img class="bannerIn" src="image/b02.png" />
+	</div>
  </body>
  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
  <script>
